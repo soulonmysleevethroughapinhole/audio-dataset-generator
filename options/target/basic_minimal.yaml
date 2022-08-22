@@ -1,0 +1,28 @@
+name: BASIC
+structure:
+  oscillators:
+    - oscillator:
+        oscillator_name: osc_A
+        pitch:
+          octaves:
+            range:
+              min: -4
+              default: 1
+              max: 4
+          semitones:
+            range:
+              min: -12
+              default: 0
+              max: 12
+          cents:
+            range:
+              min: -100
+              default: 0
+              max: 100
+          # parameter name here
+        wavetable_position:
+          range:
+            min: 0 # double check
+            default: 0 # min
+            max: 100 # double check
+          # parameter name here

@@ -1,0 +1,12 @@
+github.com/bake/wave v0.0.0-20200119124957-b37319a68eb1 h1:eZrL/blV8M0DHVSMTPrLOIK8g/XczKCwHjXG/yrKpHs=
+github.com/bake/wave v0.0.0-20200119124957-b37319a68eb1/go.mod h1:pDDPxYRJnvfYheR8d5HDSkwe3lDK4WdcPQnI1XuScAs=
+github.com/orcaman/writerseeker v0.0.0-20180723184025-774071c66cec h1:0bqN8Rf2FuWPPjV5mKQZadZrGlhA3j5IHQHQGnDOhZM=
+github.com/orcaman/writerseeker v0.0.0-20180723184025-774071c66cec/go.mod h1:nBdnFKj15wFbf94Rwfq4m30eAcyY9V/IyKAGQFtqkW0=
+github.com/pkg/errors v0.8.1 h1:iURUrRGxPUNPdy5/HRSm+Yj6okJ6UtLINN0Q9M4+h3I=
+github.com/pkg/errors v0.8.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
+github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=
+gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405/go.mod h1:Co6ibVJAznAaIkqp8huTwlJQCZ016jof/cbN4VW5Yz0=
+gopkg.in/yaml.v3 v3.0.1 h1:fxVm/GzAzEWqLHuvctI91KS9hhNmmWOoWu0XTYJS7CA=
+gopkg.in/yaml.v3 v3.0.1/go.mod h1:K4uyk7z7BCEPqu6E+C64Yfv1cQ7kz7rIZviUmN+EgEM=

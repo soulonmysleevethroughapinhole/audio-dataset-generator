@@ -1,0 +1,13 @@
+name: DEFAULT
+sample_rate: 48000
+frame_size: 4096
+persistence_folder_path: data/datasets/audio/basic_test_30 # maybe leaf on sep param
+persistence_folder_restrictions: False # empty list? to be clean
+persistence_file_naming: increment
+patch_persistence_folder_path: data/datasets/patches/basic_test_30 # maybe leaf on sep param
+patch_persistence_folder_options: subfolders1000
+# patch_rewrite_if_filled (maybe in restrictions?)
+
+# persistence_test_only: True
+
+# persistence_test_only (only write first n)

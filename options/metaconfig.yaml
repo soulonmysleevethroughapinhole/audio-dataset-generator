@@ -1,0 +1,5 @@
+optionspath: options
+# targetoptionsname: default.yaml
+# targetoptionsname: basic.yaml
+targetoptionsname: basic_minimal.yaml
+preferenceoptionsname: default.yaml

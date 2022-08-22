@@ -1,0 +1,22 @@
+# each oscillator doesn't need to be specified seperately
+# can just use a skeleton config ie wavetable.yaml or oscillators.yaml
+# and impose connector restrictions in the parent conf
+
+# <define wavetable_oscillator structure>
+
+synthesizer:
+  oscillators:
+    - oscillator:
+      type: wavetable_oscillator
+      connectors:
+        from:
+          B
+          noise
+          sub
+      restrictions:
+        
+        
+    - oscillator:
+    - oscillator:
+    - oscillator:
+

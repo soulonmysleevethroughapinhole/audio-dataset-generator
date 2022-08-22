@@ -1,0 +1,27 @@
+name: DEFAULT
+# describes the strucutre of the synthesizer
+structure: 
+  oscillators:
+    - oscillator: oscillator_A
+      supported_waves:
+        - sine
+        - square
+        - triangle
+        - saw
+      # trying to figure out how to describe this
+      # I want one for sending between osc -> filter
+      # and one for osc -> osc (am rm fm)
+      # but then this includes the effects that are done just by comp
+      connector_options_from_processor: 
+        - FMfromB
+        - AMfromB
+        - RMfromB
+      
+      connector_options_to_filter: #maybe? still shoddy
+
+
+    - oscillator: oscillator_B
+    - oscillator: oscillator_sub
+    - oscillator: noise_oscillator
+
+

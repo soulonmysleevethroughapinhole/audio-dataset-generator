@@ -1,0 +1,220 @@
+name: DEFAULT
+# describes the strucutre of the synthesizer
+structure: 
+  oscillators:
+    # perhaps split by oscillator type? implying hybrid synths
+    # still confused about the way to connect them (in the long run)
+    # serum should be fairly simple, bundle up (osc-gain-env) then 
+    # have an output connected to a filter (just page1 rn)
+    # maybe interprocessor modifiers should be restricted by pref?
+    # I guess it's not necessary, emulated synths can be hardcoded 
+    # to target yaml, how they are generated datasets from can be
+    # policed by preferences
+    # for experimental synthesizers, I can see restrictions being 
+    # necessary
+    # - oscillator_name: wavetable_oscillator_A
+    - oscillator: 
+      oscillator_name: wavetable_oscillator_A
+      # supported_waves:
+      #   - sine
+      #   - square
+      #   - triangle
+      #   - saw
+      supported_wavetables: 
+        - basic_shapes
+      type: wavetable
+      enabled: True
+      pitch:
+        octaves:
+          range:
+            min: -4
+            default: 0
+            max: 4
+        semitones:
+          range:
+            min: -12
+            default: 0
+            max: 12
+        cents:
+          range:
+            min: -100
+            default: 0
+            max: 100
+      unison:
+        voices:
+          min: 1
+          default: 1
+          max: 2
+        detune: # double check
+          min: -1 # double check
+          default: 0 # double check
+          min: 1 # double check
+          #restriction: unison.voices > 1
+        blend:
+          min: -1 # double check
+          default: 0 # double check
+          min: 1 # double check
+        strange:
+          - balancevolumevoices
+      wavetable_position:
+        min: 0 # double check
+        default: 0 # min
+        max: 100 # double check
+      # trying to figure out how to describe this
+      # I want one for sending between osc -> filter
+      # and one for osc -> osc (am rm fm)
+      # but then this includes the effects that are done just by comp
+      # connector_options_from_processor: 
+      #   - FMfromB
+      #   - AMfromB
+      #   - RMfromB
+      warp_menu:
+        - self_sync:
+          min:# fill
+          default: # fill
+          max: # fill
+        - windowed_sync:
+          min: # fill
+          default: # fill
+          max: # fill
+        - bend_plus:
+          min: # fill
+          default: # fill
+          max: # fill
+        - bend_minus:
+          min: # fill
+          default: # fill
+          max:  # fill
+        - bend_plus_minus:
+          min: # fill
+          default: # fill
+          max: # fill
+        - PWM:
+          min: # fill
+          default: # fill
+          max: # fill
+        - asym_plus:
+          min: # fill 
+          default: # fill
+          max: # fill
+        - asym_minus:
+          min: # fill 
+          default: # fill
+          max: # fill
+        - asym_plus_minus:
+          min: # fill 
+          default: # fill
+          max: # fill
+        - flip:
+          min: # fill 
+          default: # fill
+          max: # fill
+        - mirror:
+          min: # fill 
+          default: # fill
+          max: # fill
+        - remap 1
+        - remap 2
+        - remap 3
+        - remap 4
+        - quantize
+        - FM:
+          from: 
+            - A
+            - B
+            - NOISE
+            - SUB
+        - AM:
+          from: 
+            - A
+            - B
+            - NOISE
+            - SUB
+        - RM:
+          from: 
+            - A
+            - B
+            - NOISE
+            - SUB
+      phase:
+        min:
+        default:
+        max: 
+      random:
+        min:
+        default:
+        max: 
+      # connector_options_to_filter: #maybe? still shoddy
+      # connected_to: # maybe this should be done from the recv end
+    - oscillator: oscillator_B # same as osc A . . .
+    - oscillator: oscillator_sub
+    - oscillator: noise_oscillator
+      type: noise
+      noisetables: # weird name
+        - whitenoise
+        - bright
+      implements_oneshot: true
+        default: false
+      implements_keytracking: true
+        default: false
+      pitch:
+        min:
+        default:
+        max: 
+      pan:
+        min:
+        default:
+        max: 
+      level:
+        min:
+        default:
+        max: 
+      phase:
+        min:
+        default:
+        max: 
+      random:
+        min:
+        default:
+        max: 
+  filters:
+    supported_filter_types:
+      - mglow12
+      - mglow18
+      - mglow24
+    cutoff:
+      min:
+      default:
+      max:
+    res:
+      min:
+      default:
+      max:
+    stereo:
+      min:
+      default:
+      max:
+    drive:
+      min:
+      default:
+      max:
+    var: # for basic filters  this is <fat>
+      min:
+      default:
+      max:
+    mix:
+      min:
+      default:
+      max:
+    implements_keytrackling: true 
+      default: false
+    connectors_from:
+      osc_a:
+        default: true
+      osc_b:
+        default: false
+      osc_sub:
+        default: false
+      osc_noise:
+        default: false
+
