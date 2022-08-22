@@ -3,11 +3,13 @@ package dataset_generator
 import (
 	"log"
 
+	"github.com/soulonmysleevethroughapinhole/audio-dataset-generator/pkg/patch_generator"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/audio_handler"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/emulator"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/options"
-	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch_generator"
-	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch_handler"
+	patchpkg "github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch"
+
+	// "github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch_handler"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/synthesizer/audiomodule"
 )
 
@@ -30,7 +32,7 @@ func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[strin
 
 	patches, patch_access := patch_generator.App(synth_capabilities, ws_options)
 
-	var patchhandler patch_handler.PatchHandler
+	var patchhandler patchpkg.PatchHandler
 	patchhandler.Load(ws_options)
 
 	// maybe can remove soon?
@@ -60,7 +62,7 @@ func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[strin
 	}
 
 	// reload patches instead,
-	reloaded_patches := make(map[string]patch_generator.Patch, len(patches))
+	reloaded_patches := make(map[string]patchpkg.Patch, len(patches))
 	path_list, filename_list = patchhandler.GetFilesInPersistence()
 
 	if len(path_list) != len(filename_list) {
