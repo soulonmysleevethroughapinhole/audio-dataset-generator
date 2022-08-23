@@ -15,11 +15,6 @@ func main() {
 	// TODO: load options from here (check up)
 	ws_options.Load() // metaconfig path static & hardcoded (good), maybe replace with env?
 
-	// synthesizer.App(&nf)
-	// audio_processor, synth_capabilities := synthesizer.App(ws_options)
-
-	// dataset_generator.App(audio_processor, synth_capabilities, ws_options)
-
 	// CHANGE TO THIS !!!!!!!!!!!
 	// synth includews audio processor, keyboard, and synth capabilities
 	synth := synthesizer.New(ws_options)
