@@ -5,12 +5,10 @@ import (
 
 	"github.com/soulonmysleevethroughapinhole/audio-dataset-generator/pkg/patch_generator"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/audio_handler"
-	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/emulator"
 	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/options"
 	patchpkg "github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch"
-
+	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/synthesizer"
 	// "github.com/soulonmysleevethroughapinhole/audio-generator/pkg/patch_handler"
-	"github.com/soulonmysleevethroughapinhole/audio-generator/pkg/synthesizer/audiomodule"
 )
 
 /*
@@ -26,11 +24,13 @@ one function: generated datasets
 
 var audiohandler audio_handler.AudioHandler
 
-func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[string]map[int]map[string]emulator.AccessParam, ws_options options.Option) {
+// func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[string]map[int]map[string]emulator.AccessParam, ws_options options.Option) {
+func App(synth synthesizer.Synthesizer, ws_options options.Option) {
 	// get synth. capabilities means accessparameters, basically, i think
 	audiohandler.Load(ws_options)
 
-	patches, patch_access := patch_generator.App(synth_capabilities, ws_options)
+	// patches, patch_access := patch_generator.App(synth_capabilities, ws_options)
+	patches, patch_access := patch_generator.App(synth.Emulator.AccessParams, ws_options)
 
 	var patchhandler patchpkg.PatchHandler
 	patchhandler.Load(ws_options)
@@ -40,7 +40,7 @@ func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[strin
 	// if len(patches) != 59049 {
 	if len(patches) != 2268 { // bad
 		log.Println(len(patches))
-		log.Println(synth_capabilities)
+		log.Println(synth.Emulator.AccessParams)
 		log.Fatal("maybe the order of ranges is different? next time this comes up save to debug")
 	}
 
@@ -84,14 +84,17 @@ func App(audioProcessor audiomodule.AudioProcessor, synth_capabilities map[strin
 		reloaded_patches[filename_list[i]] = patchhandler.LoadPatchByPath(path_list[i])
 
 		// load into audioproc
-		patchhandler.LoadPatchIntoEmulator(reloaded_patches[filename_list[i]], &synth_capabilities, patch_access)
+		// patchhandler.LoadPatchIntoEmulator(reloaded_patches[filename_list[i]], &synth_capabilities, patch_access)
+		patchhandler.LoadPatchIntoEmulator(reloaded_patches[filename_list[i]], &synth.Emulator.AccessParams, patch_access)
 
 		// TODO
 		// PLAY  HERE
 		// mods.keyboard.NoteEventFromVirtual(60, true)
 
+		synth.NoteEventFromVirtual(60, true)
+
 		// (&audioProcessor).keyboard.NoteEventFromVirtual(60, true) // need to change audiomodule interface
-		signal := audiohandler.GetSignal(audioProcessor, 5)
+		signal := audiohandler.GetSignal(synth.Modules, 5)
 
 		audiohandler.PersistAudioWithName(signal, filename_list[i])
 
